@@ -34,6 +34,11 @@ jobs:
           # Reproduce pipeline if any changes detected in dependencies
           dvc repro --pull
 
+          git config --local user.email "action@github.com"
+          git config --local user.name "GitHub Action"
+          git add dvc.lock
+          git commit -m 'dvc.lock'
+
           echo 'DVC push cache'
           dvc push --run-cache -v
 
