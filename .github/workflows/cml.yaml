@@ -39,12 +39,6 @@ jobs:
 
           test-cml-pr --new-pr 'dvc.lock' '.gitignore' 
 
-          echo 'CML Report' > report.md
-          ((dvc metrics diff -v --show-md master) || echo 'Failed diff') >> report.md
-
-          ((dvc plots diff -v --target loss.csv --show-vega master > vega.json && \
-          vl2png vega.json -s 1.3 | cml-publish --md) || echo 'Failed plots diff') >> report.md
-
-          echo 'Send report'
+         
           cml-send-comment report.md 
           
