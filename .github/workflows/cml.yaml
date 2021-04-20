@@ -37,7 +37,7 @@ jobs:
           echo 'DVC push cache'
           dvc push --run-cache -v
 
-          test-cml-pr --new-pr 'dvc.lock' '.gitignore' './**/*.json'
+          test-cml-pr --new-pr 'dvc.lock' '.gitignore' 
 
           echo 'CML Report' > report.md
           ((dvc metrics diff -v --show-md master) || echo 'Failed diff') >> report.md
