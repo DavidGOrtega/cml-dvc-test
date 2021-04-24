@@ -38,7 +38,7 @@ jobs:
           dvc push --run-cache -v
 
           
-          #echo 'CML Report' > report.md
+          # echo 'CML Report' > report.md
           test-cml-pr 'dvc.lock' '.gitignore' > report.md
           cml-send-comment report.md 
           
