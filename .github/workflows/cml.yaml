@@ -23,8 +23,6 @@ jobs:
           AWS_ACCESS_KEY_ID: ${{ secrets.AWS_ACCESS_KEY_ID }}
           AWS_SECRET_ACCESS_KEY: ${{ secrets.AWS_SECRET_ACCESS_KEY }}
         run: |
-          git fetch origin
-          git branch -r
           sudo npm install -g git://github.com/iterative/cml.git#cml-pr --save 
 
           pip install -r requirements.txt
@@ -40,6 +38,6 @@ jobs:
 
           
           echo 'CML Report' > report.md
-          test-cml-pr 'dvc.lock' '.gitignore' > report.md
+          test-cml-pr 'dvc.lock' '.gitignore' >> report.md
           cml-send-comment report.md 
           
